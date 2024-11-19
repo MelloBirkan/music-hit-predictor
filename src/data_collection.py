@@ -5,6 +5,8 @@ import pandas as pd
 from pathlib import Path
 import time
 import numpy as np
+import os
+
 class SpotifyAPI:
     def __init__(self, client_id, client_secret):
         self.client_id = client_id
@@ -79,21 +81,22 @@ class SpotifyAPI:
         return {item['id']: item for item in response['audio_features'] if item}
 
 def main():
-    Path('data').mkdir(exist_ok=True)
-    
-    CLIENT_ID = '586933b52e724f5597759048a816faeb'
-    CLIENT_SECRET = 'a86bfd748c0a4bdc88e59b8d42afc0e9'
-    
-    # Lista de Playlists
-    PLAYLIST_IDS = [
-        '0xqkC5H1oerl14tBctvN3z',  # Top 50 Brasil
-        '37i9dQZF1DX0FOF1IUWK1W',  # Top Brasil
-        '37i9dQZF1DX10zKzsJ2jva',  # Viral Brasil
-        '3GtLjMGHfoNgzbeBRyx5qm',   # Brasil Underground
-        '1OTwB0WRqKPDSK54KOJzGz'   # Descobertas da Semana
-    ]
-    
     try:
+        # Adicione verificação de variáveis de ambiente
+        CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID', '586933b52e724f5597759048a816faeb')
+        CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET', 'a86bfd748c0a4bdc88e59b8d42afc0e9')
+        
+        Path('data').mkdir(exist_ok=True)
+        
+        # Lista de Playlists
+        PLAYLIST_IDS = [
+            '0xqkC5H1oerl14tBctvN3z',  # Top 50 Brasil
+            '37i9dQZF1DX0FOF1IUWK1W',  # Top Brasil
+            '37i9dQZF1DX10zKzsJ2jva',  # Viral Brasil
+            '3GtLjMGHfoNgzbeBRyx5qm',   # Brasil Underground
+            '1OTwB0WRqKPDSK54KOJzGz'   # Descobertas da Semana
+        ]
+        
         print("Iniciando coleta de dados...")
         spotify = SpotifyAPI(CLIENT_ID, CLIENT_SECRET)
         
@@ -169,6 +172,7 @@ def main():
             
     except Exception as e:
         print(f"Erro crítico: {e}")
+        return None
 
 if __name__ == "__main__":
     main()
