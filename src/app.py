@@ -128,4 +128,4 @@ class HitPredictorApp:
 
 if __name__ == "__main__":
     app = HitPredictorApp()
-    app.run() 
+    app.run()
