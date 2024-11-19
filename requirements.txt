@@ -2,3 +2,9 @@ streamlit
 pandas
 numpy
 requests
+scikit-learn
+joblib
+plotly
+pathlib
+base64
+json
