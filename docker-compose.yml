@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  hit-predictor:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    environment:
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    networks:
+      - hit-predictor-network
+
+networks:
+  hit-predictor-network:
+    driver: bridge
