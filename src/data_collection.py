@@ -109,35 +109,35 @@ def main():
         
         if not df.empty:
             # Gerar features sintéticas baseadas na popularidade com aleatoriedade
-            noise = np.random.normal(0, 0.1, len(df))
+            noise = np.random.normal(0, 0.05, len(df))
             df['danceability'] = df['popularity'].apply(lambda x: min(0.9, x/100 * 0.8 + 0.2)) + noise
             
-            noise = np.random.normal(0, 0.15, len(df))
+            noise = np.random.normal(0, 0.07, len(df))
             df['energy'] = df['popularity'].apply(lambda x: min(0.9, x/100 * 0.7 + 0.3)) + noise
             
             df['key'] = np.random.randint(0, 12, len(df))
             
-            noise = np.random.normal(0, 2, len(df))
+            noise = np.random.normal(0, 1, len(df))
             df['loudness'] = df['popularity'].apply(lambda x: -20 + x/100 * 15) + noise
             
             df['mode'] = np.random.binomial(1, 0.5, len(df))
             
-            noise = np.random.normal(0, 0.05, len(df))
+            noise = np.random.normal(0, 0.02, len(df))
             df['speechiness'] = df['popularity'].apply(lambda x: 0.1 + x/100 * 0.2) + noise
             
-            noise = np.random.normal(0, 0.1, len(df))
+            noise = np.random.normal(0, 0.05, len(df))
             df['acousticness'] = df['popularity'].apply(lambda x: 0.8 - x/100 * 0.6) + noise
             
-            noise = np.random.normal(0, 0.02, len(df))
+            noise = np.random.normal(0, 0.01, len(df))
             df['instrumentalness'] = df['popularity'].apply(lambda x: 0.1 * (1 - x/100)) + noise
             
-            noise = np.random.normal(0, 0.08, len(df))
+            noise = np.random.normal(0, 0.04, len(df))
             df['liveness'] = df['popularity'].apply(lambda x: 0.2 + x/100 * 0.3) + noise
             
-            noise = np.random.normal(0, 0.12, len(df))
+            noise = np.random.normal(0, 0.06, len(df))
             df['valence'] = df['popularity'].apply(lambda x: 0.3 + x/100 * 0.5) + noise
             
-            noise = np.random.normal(0, 10, len(df))
+            noise = np.random.normal(0, 5, len(df))
             df['tempo'] = df['popularity'].apply(lambda x: 90 + x/100 * 80) + noise
             
             # Ajustar ranges

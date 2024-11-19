@@ -23,17 +23,20 @@ class HitPredictorApp:
             self.models = {}
             model_path = Path('models/trained_models')
             for model_file in model_path.glob('*.joblib'):
-                if 'scaler' not in str(model_file):  # Ignorar arquivo do scaler
+                if 'scaler' not in str(model_file):
                     model_name = model_file.stem
                     self.models[model_name] = joblib.load(model_file)
         except:
             st.error("Erro: Modelos não encontrados. Execute o treinamento primeiro.")
             st.stop()
     
-    def predict_hit(self, features, model_name):
+    def predict_hit(self, features_df, model_name):
+        """
+        Recebe um DataFrame com features e retorna a probabilidade
+        """
         model = self.models[model_name]
-        prediction = model.predict_proba([features])[0]
-        return prediction[1]  # Probabilidade de ser um hit
+        prediction = model.predict_proba(features_df)[0]
+        return prediction[1]
     
     def run(self):
         st.title('🎵 Hit Predictor - Previsão de Sucessos Musicais')
@@ -60,20 +63,27 @@ class HitPredictorApp:
                 valence = st.slider('Valence', 0.0, 1.0, 0.5)
                 tempo = st.slider('Tempo', 0.0, 250.0, 120.0)
             
-            features = [
-                danceability, energy, key, loudness, mode,
-                speechiness, acousticness, instrumentalness,
-                liveness, valence, tempo
-            ]
+            # Criar DataFrame com features
+            features_df = pd.DataFrame(
+                [[
+                    danceability, energy, key, loudness, mode,
+                    speechiness, acousticness, instrumentalness,
+                    liveness, valence, tempo
+                ]], 
+                columns=self.preprocessor.features
+            )
             
             model_name = st.selectbox('Escolha o modelo', list(self.models.keys()))
             
             if st.button('Prever'):
-                # Usar o scaler carregado ao invés do preprocessor.scaler
-                features_normalized = self.scaler.transform([features])
+                # Normalizar mantendo o DataFrame
+                features_normalized = pd.DataFrame(
+                    self.scaler.transform(features_df),
+                    columns=self.preprocessor.features
+                )
                 
                 # Fazer previsão
-                hit_probability = self.predict_hit(features_normalized[0], model_name)
+                hit_probability = self.predict_hit(features_normalized, model_name)
                 
                 # Mostrar resultado
                 st.header(f'Probabilidade de ser um Hit: {hit_probability:.1%}')
