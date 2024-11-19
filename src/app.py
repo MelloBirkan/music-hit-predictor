@@ -99,26 +99,32 @@ class HitPredictorApp:
         with tab2:
             st.header('Comparação de Modelos')
             
-            # Carregar e mostrar resultados
-            results_df = pd.read_csv('models/model_results.csv', index_col=0)
-            st.dataframe(results_df)
+            try:
+                # Carregar resultados
+                results_df = pd.read_csv('models/model_results.csv')
+                st.dataframe(results_df)
+                
+                # Plotar gráfico de comparação
+                fig = go.Figure()
+                
+                for metric in ['auc_roc', 'precision', 'f1']:
+                    fig.add_trace(go.Bar(
+                        name=metric,
+                        x=results_df['model'],
+                        y=results_df[metric]
+                    ))
+                
+                fig.update_layout(
+                    title='Comparação de Performance dos Modelos',
+                    barmode='group',
+                    xaxis_title='Modelo',
+                    yaxis_title='Pontuação'
+                )
+                st.plotly_chart(fig)
             
-            # Plotar gráfico de comparação
-            trainer_results = pd.read_csv('models/model_results.csv')
-            fig = go.Figure()
-            
-            for metric in ['auc_roc', 'precision', 'f1']:
-                fig.add_trace(go.Bar(
-                    name=metric,
-                    x=trainer_results['model'],
-                    y=trainer_results[metric]
-                ))
-            
-            fig.update_layout(
-                title='Comparação de Performance dos Modelos',
-                barmode='group'
-            )
-            st.plotly_chart(fig)
+            except Exception as e:
+                st.error(f"Erro ao carregar resultados: {str(e)}")
+                st.error("Execute o treinamento dos modelos primeiro.")
 
 if __name__ == "__main__":
     app = HitPredictorApp()
