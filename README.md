@@ -14,9 +14,9 @@ Um modelo de machine learning que analisa características musicais para prever 
 
 🌐 **[Acessar Aplicação Online](https://music-hit-predictor-htvysmmfpg9dupkyst9aks.streamlit.app/)**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://music-hit-predictor-htvysmmfpg9dupkyst9aks.streamlit.app/)
+**[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://music-hit-predictor-htvysmmfpg9dupkyst9aks.streamlit.app/)**
 
-[Ver Código Fonte](https://github.com/MelloBirkan/music-hit-predictor)
+📹 **[Vídeo de Apresentação do Projeto](https://www.youtube.com/watch?v=kJBga1eXnkQ)**
 
 ## 🎯 Sobre o Projeto
 
