@@ -177,25 +177,25 @@ O projeto utiliza três modelos diferentes de classificação, cada um com suas 
 - Melhor para capturar relações não lineares complexas
 - Robusto contra overfitting
 - Métricas:
-  - AUC-ROC: 0.92
-  - Precisão: 0.88
-  - F1-Score: 0.90
+  - AUC-ROC: 0.98
+  - Precisão: 0.73
+  - F1-Score: 0.84
 
 ### Gradient Boosting
 - Excelente performance em features numéricas
 - Aprendizado sequencial adaptativo
 - Métricas:
-  - AUC-ROC: 0.94
-  - Precisão: 0.89
-  - F1-Score: 0.91
+  - AUC-ROC: 0.96
+  - Precisão: 0.87
+  - F1-Score: 0.73
 
 ### Logistic Regression
 - Modelo base para comparação
 - Boa interpretabilidade
 - Métricas:
-  - AUC-ROC: 0.85
-  - Precisão: 0.82
-  - F1-Score: 0.83
+  - AUC-ROC: 0.93
+  - Precisão: 0.48
+  - F1-Score: 0.65
 
 ### Comparação Visual dos Modelos
 ![Comparação de Modelos](assets/model-comparison.png)
