@@ -110,8 +110,6 @@ docker-compose up --build
 
 3. Acesse a aplicação em `http://localhost:8501`
 
-![Docker Setup](assets/docker-setup.gif)
-
 ### Instalação Local
 
 1. Clone o repositório:
@@ -145,10 +143,10 @@ bash start.sh
 ![Interface Principal](assets/main-interface.png)
 
 ### Previsão de Hits
-![Previsão](assets/prediction.gif)
+![Previsão](assets/overview.png)
 
 ### Comparação de Modelos
-![Comparação](assets/model-comparison.png)
+![Comparação](assets/models.png)
 
 ## 🔄 Pipeline de Dados
 
@@ -167,7 +165,6 @@ bash start.sh
    - Gradient Boosting
    - Regressão Logística
 
-![Pipeline](assets/pipeline.png)
 
 ## 📊 Modelos e Performance
 
@@ -198,4 +195,4 @@ O projeto utiliza três modelos diferentes de classificação, cada um com suas 
   - F1-Score: 0.65
 
 ### Comparação Visual dos Modelos
-![Comparação de Modelos](assets/model-comparison.png)
+![Comparação de Modelos](assets/models2.png)
