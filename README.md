@@ -196,3 +196,7 @@ O projeto utiliza três modelos diferentes de classificação, cada um com suas 
 
 ### Comparação Visual dos Modelos
 ![Comparação de Modelos](assets/models2.png)
+
+```python
+print("Feito com 💚 por ["Marcello Gonzatto Birkan-10381938", "Daniela Brazolin Flauto-10395891", "Amanda Góis Smanioto-10395773"]")
+```
