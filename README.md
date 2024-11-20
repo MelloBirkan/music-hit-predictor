@@ -10,7 +10,7 @@ Um modelo de machine learning que analisa características musicais para prever 
 - ⭐ Global Top Ever
 - 🎵 Hot Hits Global
 
-## ⚡ Acesso Rápido
+# ⚡ Acesso Rápido
 
 🌐 **[Acessar Aplicação Online](https://music-hit-predictor-htvysmmfpg9dupkyst9aks.streamlit.app/)**
 
