@@ -15,7 +15,6 @@ class DataPreprocessor:
         ]
 
     def prepare_data(self, df):
-        # Definir threshold mais realista para hits (top 25%)
         popularity_threshold = df['popularity'].quantile(0.75)
         df['is_hit'] = (df['popularity'] >= popularity_threshold).astype(int)
         

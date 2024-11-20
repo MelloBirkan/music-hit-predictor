@@ -11,6 +11,7 @@ from data_preprocessing import DataPreprocessor
 class ModelTrainer:
     def __init__(self, preprocessor):
         self.preprocessor = preprocessor
+        
         self.models = {
             'random_forest': RandomForestClassifier(
                 n_estimators=200,

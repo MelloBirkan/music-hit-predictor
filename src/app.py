@@ -48,6 +48,7 @@ class HitPredictorApp:
             
             # Inputs para características da música
             col1, col2 = st.columns(2)
+            
             with col1:
                 danceability = st.slider('Danceability', 0.0, 1.0, 0.5)
                 energy = st.slider('Energy', 0.0, 1.0, 0.5)

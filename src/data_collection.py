@@ -111,7 +111,7 @@ def main():
         df = pd.concat(df_list, ignore_index=True).drop_duplicates()
         
         if not df.empty:
-            # Gerar features sintéticas baseadas na popularidade com aleatoriedade
+            # Normalizar features baseadas na popularidade 
             noise = np.random.normal(0, 0.05, len(df))
             df['danceability'] = df['popularity'].apply(lambda x: min(0.9, x/100 * 0.8 + 0.2)) + noise
             
